@@ -1,0 +1,127 @@
+# 依赖目录
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 环境变量文件
+.env
+.env.local
+.env.production
+.env.test
+
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 操作系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE 和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# Docker 相关
+.dockerignore
+
+# 构建输出
+dist/
+build/
+*.min.js
+
+# 上传文件
+public/uploads/
+
+# 数据库备份
+*.sql.gz
+*.dump
+
+# Redis 数据
+dump.rdb
+
+# SSL 证书
+ssl/
+*.pem
+*.key
+*.crt
+*.csr
+
+# 备份文件
+*.bak
+*.backup
+*.swp
+*~
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 文档草稿
+*.draft
+TODO.md
+NOTES.md
+
+# PM2 配置
+pm2-*.json
+ecosystem.config.js
+
+# 系统文件
+proc/
+sys/
+dev/
+
+# 缓存
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# 静态资源编译
+public/build/
+public/dist/
+
+# 环境特定文件
+.env.development
+.env.staging
+
+# 敏感信息
+secrets/
+credentials/
+config/secrets.json
+
+# 用户上传
+uploads/
+user-files/
+user-content/
+
+# 日志轮转
+logs/*.gz
+logs/*.log.*

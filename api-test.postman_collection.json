@@ -1,0 +1,301 @@
+{
+  "info": {
+    "name": "德州扑克网站 API 测试集合",
+    "description": "德州扑克网站后端接口测试用例",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "用户管理",
+      "item": [
+        {
+          "name": "用户注册",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testplayer1\",\n  \"email\": \"test1@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "auth", "register"]
+            },
+            "description": "注册新用户账号"
+          },
+          "response": []
+        },
+        {
+          "name": "用户登录",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test1@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "auth", "login"]
+            },
+            "description": "用户登录获取Token"
+          },
+          "response": []
+        },
+        {
+          "name": "获取用户信息",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/user/profile",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "user", "profile"]
+            },
+            "description": "获取当前登录用户的详细信息"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "游戏房间",
+      "item": [
+        {
+          "name": "创建房间",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomName\": \"新手练习场\",\n  \"roomType\": \"cash\",\n  \"minBlind\": 10,\n  \"maxBlind\": 100,\n  \"maxPlayers\": 6\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/rooms/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "rooms", "create"]
+            },
+            "description": "创建新的游戏房间"
+          },
+          "response": []
+        },
+        {
+          "name": "获取房间列表",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/rooms/list",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "rooms", "list"]
+            },
+            "description": "获取所有可用房间列表"
+          },
+          "response": []
+        },
+        {
+          "name": "加入房间",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/rooms/join",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "rooms", "join"]
+            },
+            "description": "加入指定的游戏房间"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "游戏操作",
+      "item": [
+        {
+          "name": "开始游戏",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/game/start",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "game", "start"]
+            },
+            "description": "在指定房间开始新的牌局"
+          },
+          "response": []
+        },
+        {
+          "name": "玩家下注",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomId\": 1,\n  \"action\": \"raise\",\n  \"amount\": 50\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/game/bet",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "game", "bet"]
+            },
+            "description": "执行下注操作（check/call/raise/fold/allin）"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "统计查询",
+      "item": [
+        {
+          "name": "获取玩家统计",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/stats/player",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "stats", "player"]
+            },
+            "description": "获取当前玩家的游戏统计数据"
+          },
+          "response": []
+        },
+        {
+          "name": "获取游戏历史",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/stats/history?page=1&limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "stats", "history"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "获取玩家游戏历史记录"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "roomId",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}
